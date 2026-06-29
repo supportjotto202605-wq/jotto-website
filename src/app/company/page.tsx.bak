@@ -1,0 +1,111 @@
+import Image from "next/image";
+import type { Metadata } from "next";
+import HeroSection from "./HeroSection";
+import VisionSection from "./VisionSection";
+
+export const metadata: Metadata = {
+  title: "????",
+};
+
+function MessageSection() {
+  return (
+    <section className="bg-[#141414] py-28 lg:py-36">
+      <div className="mx-auto w-full max-w-[1200px] px-8 lg:px-16">
+        <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
+          <div className="relative aspect-[16/9] overflow-hidden self-start mt-[54px]">
+            <Image
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80"
+              alt="CEO Portrait"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover grayscale"
+            />
+          </div>
+
+          <div className="lg:pt-2">
+            <p className="font-en mb-8 text-[11px] uppercase tracking-[0.35em] text-[#C0392B]">
+              CEO Message
+            </p>
+            <h2 className="text-xl md:text-2xl font-extralight text-[#f0ede8] mb-8 leading-relaxed">
+              ?????????
+              <br />
+              ?????????????????
+            </h2>
+            <div className="space-y-5 text-[#8a8a8a] font-light leading-relaxed text-[14px]">
+              <p>????Jotto?????????????????????????????????????????????????????</p>
+              <p>????????????????????????????????????????????????????????????????????</p>
+              <p>????????????????????????????????????????????????????????</p>
+            </div>
+            <div className="mt-12 border-t border-[#2a2a2a] pt-8">
+              <p className="text-ja text-base font-normal text-[#f0ede8]">????</p>
+              <p className="text-ja mt-1 text-sm font-light text-[#8a8a8a]">?????</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProfileSection() {
+  const profileData = [
+    { label: "COMPANY NAME", value: "????Jotto", valueSub: "Jotto Inc." },
+    { label: "ADDRESS", value: "?170-0012\n?????????3-16-16 ????????301", valueSub: "" },
+    { label: "ESTABLISHED", value: "2026?5?", valueSub: "" },
+    { label: "CEO", value: "????", valueSub: "Kazuki Ono" },
+    { label: "CAPITAL", value: "880,000?", valueSub: "" },
+    { label: "BUSINESS", value: "???????????????????????????????????", valueSub: "" },
+    { label: "INVOICE NUMBER", value: "T1234567890123?????", valueSub: "" },
+  ];
+
+  return (
+    <section className="bg-[#141414] pb-32 pt-28 lg:pb-40 lg:pt-36">
+      <div className="mx-auto w-full max-w-[1200px] px-8 lg:px-16">
+        <div className="mb-20 text-center lg:mb-24">
+          <p className="font-en mb-5 text-[11px] uppercase tracking-[0.35em] text-[#C0392B]">
+            Company Profile
+          </p>
+          <h2 className="text-ja text-[clamp(1.75rem,3.5vw,3rem)] font-extralight tracking-wide text-[#f0ede8]">
+            ????
+          </h2>
+        </div>
+
+        <dl className="border-t border-[#2a2a2a]">
+          {profileData.map((item) => (
+            <div
+              key={item.label}
+              className="grid items-start gap-6 border-b border-[#2a2a2a] py-4 md:grid-cols-[240px_1fr] md:gap-12"
+            >
+              <dt className="font-en pt-1 text-[11px] uppercase tracking-[0.22em] text-[#8a8a8a]">
+                {item.label}
+              </dt>
+              <dd>
+                <div>
+                  <p className="whitespace-pre-line font-light" style={{ color: "#f0ede8" }}>
+                    {item.value}
+                  </p>
+                  {item.valueSub && (
+                    <p className="mt-1 text-sm" style={{ color: "#8a8a8a" }}>
+                      {item.valueSub}
+                    </p>
+                  )}
+                </div>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
+export default function CompanyPage() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-[#f0ede8]">
+      <HeroSection />
+      <MessageSection />
+      <VisionSection />
+      <ProfileSection />
+    </div>
+  );
+}
