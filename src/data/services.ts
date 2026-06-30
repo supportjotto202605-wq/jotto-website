@@ -134,7 +134,7 @@ export const businessSummary =
 
 export const aboutImage =
 
-  "/About Jotto.png";
+  "/About%20Jotto.png";
 
 
 
