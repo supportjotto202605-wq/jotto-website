@@ -55,7 +55,7 @@ function ProfileSection() {
     { label: "CEO", value: "大野一樹", valueSub: "Kazuki Ono" },
     { label: "CAPITAL", value: "880,000円", valueSub: "" },
     { label: "BUSINESS", value: "不動産事業・テクノロジー事業・アウトソーシング事業・プロダクト開発事業", valueSub: "" },
-    { label: "INVOICE NUMBER", value: "T1234567890123（取得中）", valueSub: "" },
+    { label: "INVOICE NUMBER", value: "取得中", valueSub: "" },
   ];
 
   return (
