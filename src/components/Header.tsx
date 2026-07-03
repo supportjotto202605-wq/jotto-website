@@ -67,9 +67,9 @@ export default function Header() {
             aria-label="メニューを開く"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <span className="block h-px w-6 bg-[var(--text)]" />
-            <span className="block h-px w-6 bg-[var(--text)]" />
-            <span className="block h-px w-4 bg-[var(--text)]" />
+            <span className="block h-px w-6 bg-[var(--foreground)]" />
+            <span className="block h-px w-6 bg-[var(--foreground)]" />
+            <span className="block h-px w-4 bg-[var(--foreground)]" />
           </button>
         </div>
       </div>
