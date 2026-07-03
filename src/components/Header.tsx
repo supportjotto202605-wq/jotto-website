@@ -60,17 +60,18 @@ export default function Header() {
           </Link>
         </div>
 
-        <button
-          type="button"
-          className="ml-auto flex flex-col gap-1.5 md:hidden shrink-0"
-          style={{ marginRight: "16px" }}
-          aria-label="メニューを開く"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="block h-px w-6 bg-[var(--text)]" />
-          <span className="block h-px w-6 bg-[var(--text)]" />
-          <span className="block h-px w-4 bg-[var(--text)]" />
-        </button>
+        <div className="flex flex-1 items-center justify-end pr-4 md:hidden">
+          <button
+            type="button"
+            className="flex flex-col gap-1.5 shrink-0"
+            aria-label="メニューを開く"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className="block h-px w-6 bg-[var(--text)]" />
+            <span className="block h-px w-6 bg-[var(--text)]" />
+            <span className="block h-px w-4 bg-[var(--text)]" />
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
