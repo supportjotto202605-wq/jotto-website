@@ -22,7 +22,7 @@ function HeroSection() {
         事業紹介
       </p>
       <div className="w-64 h-px mb-6" style={{ backgroundColor: "#C0392B" }} />
-      <h1 className="text-5xl md:text-7xl font-extralight tracking-[0.2em] text-center" style={{ color: "#f0ede8" }}>
+      <h1 className="text-2xl sm:text-3xl md:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] md:tracking-[0.2em] text-center whitespace-nowrap" style={{ color: "#f0ede8" }}>
         {text.split("").map((char, i) => (
           <span
             key={i}

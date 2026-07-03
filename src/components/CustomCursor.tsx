@@ -8,13 +8,15 @@ export default function CustomCursor() {
   const target = useRef({ x: 0, y: 0 });
   const rafId = useRef<number>(0);
   const [mounted, setMounted] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsTouchDevice(window.matchMedia("(pointer: coarse)").matches);
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || isTouchDevice) return;
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -66,9 +68,9 @@ export default function CustomCursor() {
       document.removeEventListener("mouseover", onOver);
       cancelAnimationFrame(rafId.current);
     };
-  }, [mounted]);
+  }, [mounted, isTouchDevice]);
 
-  if (!mounted) {
+  if (!mounted || isTouchDevice) {
     return null;
   }
 

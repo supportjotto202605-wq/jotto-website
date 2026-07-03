@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Edge = -1 | 0 | 1;
 interface PieceDef {
@@ -48,17 +48,36 @@ const PIECES = buildPieces().map(p => {
 
 export function PuzzleVisualization() {
   const [assembled, setAssembled] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  const boardW = W * COLS, boardH = H * ROWS, framePad = 56;
+  const frameW = boardW + framePad * 2, frameH = boardH + framePad * 2;
+
   useEffect(() => {
     const t = setTimeout(() => setAssembled(true), 300);
     return () => clearTimeout(t);
   }, []);
 
-  const boardW = W * COLS, boardH = H * ROWS, framePad = 56;
-  const frameW = boardW + framePad * 2, frameH = boardH + framePad * 2;
+  useEffect(() => {
+    const updateScale = () => {
+      const containerWidth = containerRef.current?.clientWidth ?? window.innerWidth;
+      const availableWidth = containerWidth - 32;
+      setScale(Math.min(1, availableWidth / frameW));
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, [frameW]);
 
   return (
-    <div style={{ backgroundColor: "#0a0a0a", display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 32px" }}>
-      <div style={{ position: "relative", width: frameW, height: frameH, border: "2px solid #C0392B", borderRadius: 6 }}>
+    <div
+      ref={containerRef}
+      style={{ backgroundColor: "#0a0a0a", display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 16px", width: "100%", overflow: "hidden" }}
+    >
+      <div style={{ width: frameW * scale, height: frameH * scale }}>
+        <div style={{ position: "relative", width: frameW, height: frameH, transform: `scale(${scale})`, transformOrigin: "top left", border: "2px solid #C0392B", borderRadius: 6 }}>
         <div style={{ position: "absolute", left: "50%", top: -14, transform: "translateX(-50%)", padding: "0 16px", backgroundColor: "#0a0a0a", color: "#C0392B", fontFamily: "ui-sans-serif, system-ui, sans-serif", fontSize: 13, fontWeight: 600, letterSpacing: "0.45em" }}>
           JOTTO
         </div>
@@ -89,6 +108,7 @@ export function PuzzleVisualization() {
               </div>
             );
           })}
+        </div>
         </div>
       </div>
     </div>

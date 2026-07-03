@@ -35,8 +35,20 @@ export default function Header() {
         backgroundColor: scrolled ? "#0a0a0a" : undefined,
       }}
     >
-      <div className="flex w-full items-center">
-        <div className="mt-2 mr-12 shrink-0 lg:mr-20" style={{ marginLeft: "32px" }}>
+      <div className="relative flex w-full items-center">
+        <button
+          type="button"
+          className="flex flex-col gap-1.5 md:hidden shrink-0"
+          style={{ marginLeft: "16px" }}
+          aria-label="メニューを開く"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className="block h-px w-6 bg-[var(--text)]" />
+          <span className="block h-px w-6 bg-[var(--text)]" />
+          <span className="block h-px w-4 bg-[var(--text)]" />
+        </button>
+
+        <div className="mt-2 mx-auto shrink-0 md:mx-0 md:mr-12 lg:mr-20 md:ml-8">
           <LogoLink />
         </div>
 
@@ -59,17 +71,6 @@ export default function Header() {
             お問い合わせ
           </Link>
         </div>
-
-        <button
-          type="button"
-          className="ml-auto flex flex-col gap-1.5 md:hidden"
-          aria-label="メニューを開く"
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="block h-px w-6 bg-[var(--text)]" />
-          <span className="block h-px w-6 bg-[var(--text)]" />
-          <span className="block h-px w-4 bg-[var(--text)]" />
-        </button>
       </div>
 
       {menuOpen && (
