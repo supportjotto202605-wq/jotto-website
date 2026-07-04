@@ -18,8 +18,22 @@ export default function Footer() {
           <div className="site-footer__info">
             <p>株式会社Jotto</p>
             <p>〒170-0012 東京都豊島区上池袋3-16-16 フォリスタ上池袋301</p>
-            <p>TEL: 03-0000-0000</p>
+            <p>TEL: 取得中</p>
+            <p>Email: info@jotto.co.jp</p>
           </div>
+        </div>
+
+        <div className="site-footer__social flex justify-center py-4">
+          <a
+            href="https://www.instagram.com/jotto202605/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs tracking-[0.08em] transition-colors hover:text-[#f0ede8]"
+            style={{ color: "#8a8a8a" }}
+            aria-label="Instagram"
+          >
+            Instagram
+          </a>
         </div>
 
         <nav className="site-footer__legal text-center" aria-label="フッターナビゲーション">
