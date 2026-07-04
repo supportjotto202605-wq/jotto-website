@@ -173,10 +173,22 @@ export default function ContactPage() {
     setShowConsentModal(true);
   };
 
-  const confirmSubmit = () => {
+  const confirmSubmit = async () => {
     setShowConsentModal(false);
-    setPendingSubmit(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode, data: formData }),
+      });
+      if (!res.ok) throw new Error("送信失敗");
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      alert("送信に失敗しました。時間をおいて再度お試しください。");
+    } finally {
+      setPendingSubmit(false);
+    }
   };
 
   const cancelSubmit = () => {
