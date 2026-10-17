@@ -9,7 +9,7 @@ export default function LegalPage() {
     { label: "販売業者", value: "株式会社Jotto" },
     { label: "代表者", value: "大野一樹" },
     { label: "所在地", value: "〒170-0012 東京都豊島区上池袋3-16-16 フォリスタ上池袋301" },
-    { label: "電話番号", value: "090-0000-0000（取得中）" },
+    { label: "電話番号", value: "070-9099-2980" },
     { label: "メールアドレス", value: "（取得中）" },
     { label: "サービス名", value: "禁煙ペイ" },
     { label: "サービス内容", value: "禁煙の誓約と自動課金を組み合わせた禁煙サポートサービス" },

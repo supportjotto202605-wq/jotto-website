@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="site-footer__info">
             <p>株式会社Jotto</p>
             <p>〒170-0012 東京都豊島区上池袋3-16-16 フォリスタ上池袋301</p>
-            <p>TEL: 取得中</p>
+            <p>TEL: 070-9099-2980</p>
             <p>Email: info@jotto.co.jp</p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function Footer() {
       <div className="site-footer__bottom">
         <p className="site-footer__copyright">© 2026 Jotto Inc.</p>
         <p className="text-xs text-center mt-2" style={{ color: "#8a8a8a" }}>
-          適格請求書発行事業者登録番号：T1234567890123（取得中）
+          適格請求書発行事業者登録番号：T5013301056317
         </p>
       </div>
     </footer>
