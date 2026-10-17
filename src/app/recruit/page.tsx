@@ -226,7 +226,7 @@ function ContactCTASection() {
             </svg>
           </Link>
           <Link
-            href="mailto:careers@jotto.co.jp"
+            href="mailto:info@jotto.co.jp"
             className="inline-flex items-center gap-4 border border-[rgba(240,237,232,0.3)] px-10 py-5 font-light tracking-[0.1em] text-[#f0ede8] hover:bg-[#f0ede8] hover:text-[#0a0a0a] transition-all duration-300"
           >
             <span>メールで問い合わせ</span>

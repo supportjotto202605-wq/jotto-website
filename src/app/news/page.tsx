@@ -6,12 +6,6 @@ import { useState, useEffect } from "react";
 const newsItems = [
   {
     date: "2026 / 06",
-    category: "SERVICE",
-    title: "Webアプリ「禁煙ペイ」　リリース",
-    body: "禁煙の誓約と自動課金を組み合わせた禁煙サポートアプリ「禁煙ペイ」をリリースしました。",
-  },
-  {
-    date: "2026 / 06",
     category: "NEWS",
     title: "株式会社Jotto コーポレートサイトをオープンしました",
     body: "株式会社Jottoのコーポレートサイトを公開いたしました。今後ともよろしくお願いいたします。",

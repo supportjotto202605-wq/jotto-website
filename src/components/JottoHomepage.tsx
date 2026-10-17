@@ -301,7 +301,6 @@ function NewsSection() {
 
   const newsItems = [
     { date: "2026 / 06", tag: "NEWS", title: "株式会社Jotto　設立" },
-    { date: "2026 / 06", tag: "SERVICE", title: "Webアプリ「禁煙ペイ」　リリース" },
     { date: "2026 / 06", tag: "NEWS", title: "コーポレートサイト　オープン" },
   ];
 

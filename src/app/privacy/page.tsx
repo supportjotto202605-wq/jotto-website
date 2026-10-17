@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -72,6 +73,13 @@ export default function PrivacyPage() {
               制定日：2026年6月
               <br />
               株式会社Jotto
+            </p>
+            <p className="text-sm leading-relaxed mt-4" style={{ color: "#8a8a8a" }}>
+              お問い合わせフォームにおける個人情報の取り扱いについては「
+              <Link href="/contact/privacy" className="underline underline-offset-2" style={{ color: "#f0ede8" }}>
+                お問い合わせにおける個人情報の取り扱いについて
+              </Link>
+              」をご確認ください。
             </p>
           </div>
         </div>

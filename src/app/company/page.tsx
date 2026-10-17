@@ -55,6 +55,8 @@ function ProfileSection() {
     { label: "CEO", value: "大野一樹", valueSub: "Kazuki Ono" },
     { label: "CAPITAL", value: "880,000円", valueSub: "" },
     { label: "BUSINESS", value: "不動産事業・テクノロジー事業・アウトソーシング事業・プロダクト開発事業", valueSub: "" },
+    { label: "TEL", value: "070-9099-2980", valueSub: "" },
+    { label: "EMAIL", value: "info@jotto.co.jp", valueSub: "" },
     { label: "INVOICE NUMBER", value: "T5013301056317", valueSub: "" },
   ];
 

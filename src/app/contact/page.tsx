@@ -346,7 +346,14 @@ export default function ContactPage() {
                 </>
               )}
 
-              <div className="pt-2">
+              <div className="pt-2 space-y-4">
+                <p className="text-xs leading-relaxed" style={{ color: "#8a8a8a" }}>
+                  お問い合わせ内容の取り扱いは「
+                  <Link href="/contact/privacy" className="underline underline-offset-2" style={{ color: "#f0ede8" }}>
+                    お問い合わせにおける個人情報の取り扱いについて
+                  </Link>
+                  」をご確認ください
+                </p>
                 <button
                   type="submit"
                   disabled={pendingSubmit}
@@ -386,8 +393,8 @@ export default function ContactPage() {
               <p className="mt-4">取得した個人情報は、法令に基づく場合を除き、第三者に提供することはありません。</p>
               <p>
                 詳細は「
-                <Link href="/privacy" className="underline underline-offset-2" style={{ color: "#f0ede8" }}>
-                  プライバシーポリシー
+                <Link href="/contact/privacy" className="underline underline-offset-2" style={{ color: "#f0ede8" }}>
+                  お問い合わせにおける個人情報の取り扱いについて
                 </Link>
                 」をご確認ください。
               </p>
