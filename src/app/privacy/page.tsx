@@ -56,7 +56,7 @@ export default function PrivacyPage() {
               <br />
               株式会社Jotto
               <br />
-              メールアドレス：（取得中）
+              メールアドレス：info@jotto.co.jp
             </p>
           </div>
 
