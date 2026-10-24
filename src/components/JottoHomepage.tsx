@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { LogoImage } from "@/components/Logo";
+import LogoIntro from "@/components/LogoIntro";
 import { aboutImage, recruitImage, services } from "@/data/services";
 
 function HeroSection() {
@@ -11,12 +12,9 @@ function HeroSection() {
 
   return (
     <section className="flex min-h-screen flex-col items-center justify-start bg-background px-6 pb-20 pt-28">
-      <LogoImage
-        className="mx-auto mb-16 w-72 opacity-90 md:w-96 lg:w-[28rem]"
-        width={480}
-        height={180}
-        priority
-      />
+      <div className="mx-auto mb-16 w-72 md:w-96 lg:w-[28rem]">
+        <LogoIntro />
+      </div>
       <p className="font-en mb-8 text-center text-base uppercase tracking-[0.3em] text-primary">
         Bridging Business
       </p>
