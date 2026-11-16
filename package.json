@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-email/render": "^2.0.10",
-    "next": "^15.3.3",
+    "next": "^15.5.29",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "resend": "^6.17.1"
@@ -22,7 +22,7 @@
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.28.0",
-    "eslint-config-next": "^15.3.3",
+    "eslint-config-next": "^15.5.29",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3"
   }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { TURNSTILE_SITE_KEY } from "./config";
 
 /* お問い合わせフォーム(入力 → 確認 → 完了)。動きと送信は engineLower.js */
 export default function ContactBody() {
@@ -23,7 +24,8 @@ export default function ContactBody() {
 </li>
 </ol>
 </div>
-<div className="fm io"><div className="up"><div data-v="1"><div className="fr"><p className="lb" style={{"marginTop": "0"} as CSSProperties}>{"お問い合わせの種類"}<em>{"必須"}</em>
+<div className="fm io"><div className="up"><div data-v="1"><div className="hp" aria-hidden="true"><label>{"この欄は入力しないでください"}<input type="text" name="website" tabIndex={-1} autoComplete="off" data-hp="" /></label></div>
+<div className="fr"><p className="lb" style={{"marginTop": "0"} as CSSProperties}>{"お問い合わせの種類"}<em>{"必須"}</em>
 </p>
 <div className="seg"><button type="button" data-act="kind" data-k="partner">{"パートナー企業募集"}</button>
 <button type="button" data-act="kind" data-k="apply">{"応募する"}</button>
@@ -86,6 +88,8 @@ export default function ContactBody() {
 </div>
 <div data-v="2" hidden><h3>{"入力内容のご確認"}</h3>
 <dl className="cf" data-cf=""></dl>
+<div className="ts" data-ts="" data-ts-key={TURNSTILE_SITE_KEY}></div>
+<p className="em" data-em3="" hidden role="alert" style={{"marginTop": "18px"} as CSSProperties}>{"ボット判定の確認が終わっていません。チェックが完了してから、もう一度送信してください。表示されない場合は info@jotto.co.jp までご連絡ください。"}</p>
 <p className="em" data-em2="" hidden role="alert" style={{"marginTop": "18px"} as CSSProperties}>{"送信に失敗しました。時間をおいて再度お試しください。"}</p>
 <div className="sb"><button className="btn gh" type="button" data-act="back">{"修正する"}</button>
 <button className="btn" type="button" data-act="send">{"この内容で送信する"}<i><svg aria-hidden="true"><use href="#arwu"></use>

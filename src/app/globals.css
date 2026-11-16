@@ -471,3 +471,10 @@ body{overflow-x:hidden}
 .mo a.m1 b{order:2;font-size:15px;font-weight:500;letter-spacing:.1em;line-height:1.3;opacity:.8}
 .mo a.m1 span{order:1;font-family:var(--font-zen),sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,46px);letter-spacing:.06em;line-height:1.35}
 .mo a.m2::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:#0a0a0a}
+
+/* 迷惑送信対策の、人には見えない入力欄 */
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* ボット判定(Turnstile)の表示枠 */
+.ts{display:flex;justify-content:flex-end;margin-top:22px}
+.ts:empty{display:none}

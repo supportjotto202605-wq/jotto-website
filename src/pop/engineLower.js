@@ -173,8 +173,27 @@ export function bootLower(root) {
     };
 
     /* ---- フォーム(入力 → 確認 → 完了。見本のため実際の送信はしません) ---- */
-    var fw = root.querySelector('.fw'), kind = 'general', lastRows = [], sending = false;
+    var fw = root.querySelector('.fw'), kind = 'general', lastRows = [], sending = false, ctToken = '';
     if (fw) {
+    /* 迷惑送信対策:フォームを開いた時点で送信用トークンを受け取る */
+    function getToken() { return fetch('/api/contact', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) { ctToken = (j && j.token) || ''; }).catch(function () {}); }
+    getToken();
+    /* ボット判定(Cloudflare Turnstile)。サイトキーが設定されているときだけ、確認画面に表示する */
+    var tsBox = fw.querySelector('[data-ts]'), tsKey = tsBox ? tsBox.getAttribute('data-ts-key') : '', tsToken = '', tsId = null;
+    function tsRender() {
+      if (!tsKey || tsId !== null || !window.turnstile) return;
+      tsId = window.turnstile.render(tsBox, { sitekey: tsKey, language: 'ja', theme: 'light',
+        callback: function (t) { tsToken = t; var e3 = fw.querySelector('[data-em3]'); if (e3) e3.hidden = true; },
+        'expired-callback': function () { tsToken = ''; }, 'error-callback': function () { tsToken = ''; } });
+    }
+    function tsLoad() {
+      if (!tsKey) return;
+      if (window.turnstile) { tsRender(); return; }
+      if (document.querySelector('script[data-ts-script]')) return;
+      var sc = document.createElement('script'); sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; sc.async = true; sc.defer = true;
+      sc.setAttribute('data-ts-script', ''); sc.onload = function () { tsRender(); self._rebuild(); }; document.head.appendChild(sc);
+    }
+    function tsReset() { tsToken = ''; if (tsId !== null && window.turnstile) { try { window.turnstile.reset(tsId); } catch (e) {} } }
     function vis(el) { return el.offsetParent !== null; }
     function setKind(k) {
       kind = k;
@@ -185,6 +204,7 @@ export function bootLower(root) {
       fw.setAttribute('data-step', n);
       Array.prototype.forEach.call(fw.querySelectorAll('[data-v]'), function (v) { v.hidden = v.getAttribute('data-v') !== String(n); });
       window.scrollTo({ top: Math.max(0, pos(fw).y - 130), behavior: motion ? 'smooth' : 'auto' });
+      if (String(n) === '2') tsLoad();
       self._rebuild();
     }
     setKind('general');
@@ -201,12 +221,14 @@ export function bootLower(root) {
       else if (a === 'chip') b.classList.toggle('on');
       else if (a === 'back') step(1);
       else if (a === 'send') {
-        if (sending) return; sending = true; b.disabled = true;
-        var em2 = fw.querySelector('[data-em2]'); em2.hidden = true;
+        if (sending) return;
+        var em2 = fw.querySelector('[data-em2]'), em3 = fw.querySelector('[data-em3]'); em2.hidden = true; em3.hidden = true;
+        if (tsKey && !tsToken) { em3.hidden = false; tsLoad(); self._rebuild(); return; }
+        sending = true; b.disabled = true;
         var data = {}; lastRows.forEach(function (rw) { data[rw[0]] = rw[1]; if (rw[0] === 'メールアドレス') data.email = rw[1]; });
-        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: kind, data: data }) })
+        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: kind, data: data, token: ctToken, turnstile: tsToken, website: (fw.querySelector('[data-hp]') || {}).value || '' }) })
           .then(function (r) { if (!r.ok) throw new Error('send'); step(3); })
-          .catch(function () { em2.hidden = false; })
+          .catch(function () { em2.hidden = false; getToken(); tsReset(); })
           .then(function () { sending = false; b.disabled = false; });
       }
       else if (a === 'confirm') {
