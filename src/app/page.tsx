@@ -57,7 +57,7 @@ export default function Page() {
 </div>
 </div>
 </div>
-<section className="blk lt" id="company" data-sec="1" data-th="l"><div className="shd io"><i className="nb pp">{"01"}</i>
+<section className="blk lt" id="company" data-sec="1" data-th="l"><div className="shd io"><i className="nb pp"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#jbugw"></use></svg></i>
 <b className="up">{"Company"}</b>
 <span className="up">{"企業情報"}</span>
 </div>
@@ -91,7 +91,7 @@ export default function Page() {
 </div>
 </dl>
 </section>
-<section className="blk dk" id="service" data-sec="2" data-th="d" style={{"paddingBottom": "56px"} as CSSProperties}><div className="shd io"><i className="nb pp">{"02"}</i>
+<section className="blk dk" id="service" data-sec="2" data-th="d" style={{"paddingBottom": "56px"} as CSSProperties}><div className="shd io"><i className="nb pp"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#jbugw"></use></svg></i>
 <b className="up">{"Service"}</b>
 <span className="up">{"事業紹介"}</span>
 </div>
@@ -106,7 +106,7 @@ export default function Page() {
 <span className="cx-b"><span className="cx-e">{"Real Estate Consulting"}</span>
 <span className="cx-j">{"不動産コンサル事業"}</span>
 <span className="cx-d">{"不動産投資、資産運用から開発プロジェクトまで、専門知識を活かしたコンサルティングを提供します。"}</span>
-<span className="cx-m">{"事業の詳細へ"}<i><svg aria-hidden="true"><use href="#arwu"></use>
+<span className="cx-m">{"詳しく見る"}<i><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </i>
 </span>
@@ -118,7 +118,7 @@ export default function Page() {
 <span className="cx-b"><span className="cx-e">{"Outsourcing"}</span>
 <span className="cx-j">{"アウトソーシング事業"}</span>
 <span className="cx-d">{"店頭での接客・販売支援から事務・サポート業務まで対応するアウトソーシングサービス。コア業務に集中できる環境を提供します。"}</span>
-<span className="cx-m">{"事業の詳細へ"}<i><svg aria-hidden="true"><use href="#arwu"></use>
+<span className="cx-m">{"詳しく見る"}<i><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </i>
 </span>
@@ -130,7 +130,7 @@ export default function Page() {
 <span className="cx-b"><span className="cx-e">{"Product Development"}</span>
 <span className="cx-j">{"プロダクト開発事業"}</span>
 <span className="cx-d">{"アイデアをプロダクトに。WebアプリからモバイルアプリまでJottoが一気通貫で開発・運用をサポートします。"}</span>
-<span className="cx-m">{"事業の詳細へ"}<i><svg aria-hidden="true"><use href="#arwu"></use>
+<span className="cx-m">{"詳しく見る"}<i><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </i>
 </span>
@@ -139,7 +139,7 @@ export default function Page() {
 </div>
 <i className="mrg" data-a="merge" aria-hidden="true"></i>
 </section>
-<section className="blk rd" id="recruit" data-sec="3" data-th="r" style={{"paddingBottom": "calc(clamp(150px,20vw,300px) + 56px)"} as CSSProperties}><div className="shd io"><i className="nb pp">{"03"}</i>
+<section className="blk rd" id="recruit" data-sec="3" data-th="r" style={{"paddingBottom": "calc(clamp(150px,20vw,300px) + 56px)"} as CSSProperties}><div className="shd io"><i className="nb pp"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#jbugw"></use></svg></i>
 <b className="up">{"Recruit"}</b>
 <span className="up">{"採用情報"}</span>
 </div>
@@ -165,7 +165,7 @@ export default function Page() {
 </div>
 </div>
 </section>
-<section className="blk dk" id="news" data-sec="4" data-th="d"><div className="shd io"><i className="nb pp">{"04"}</i>
+<section className="blk dk" id="news" data-sec="4" data-th="d"><div className="shd io"><i className="nb pp"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#jbugw"></use></svg></i>
 <b className="up">{"News"}</b>
 <span className="up">{"お知らせ"}</span>
 </div>
@@ -192,7 +192,7 @@ export default function Page() {
 </div>
 </div>
 </section>
-<section className="blk lt ct" id="contact" data-sec="5" data-th="l"><div className="shd io" style={{"textAlign": "left"} as CSSProperties}><i className="nb pp">{"05"}</i>
+<section className="blk lt ct" id="contact" data-sec="5" data-th="l"><div className="shd io" style={{"textAlign": "left"} as CSSProperties}><i className="nb pp"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#jbugw"></use></svg></i>
 <b className="up">{"Contact"}</b>
 <span className="up">{"お問い合わせ"}</span>
 </div>

@@ -40,7 +40,7 @@ function Defs() {
 <circle cx="22" cy="22" r="2.5" fill="#0a0a0a" />
 <circle cx="20" cy="28" r="1.5" fill="#0a0a0a" />
 </symbol>
-<symbol id="arwu" viewBox="0 0 24 24"><path d="M6 18L18 6M8 6h10v10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+<symbol id="arwu" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 </symbol>
 </defs>
 </svg>
@@ -58,14 +58,10 @@ function Hud({ main, cur }: { main: boolean; cur?: string }) {
 </svg>
 <span>{"株式会社 Jotto"}</span>
 </Link>
-<nav className="pill nv" aria-label="メインナビゲーション"><Link className={cur === "company" ? "nl cur" : "nl"} href="/company" data-n="1"><i>{"01"}</i>
-{"企業情報"}</Link>
-<Link className={cur === "service" ? "nl cur" : "nl"} href="/service" data-n="2"><i>{"02"}</i>
-{"事業紹介"}</Link>
-<Link className={cur === "recruit" ? "nl cur" : "nl"} href="/recruit" data-n="3"><i>{"03"}</i>
-{"採用情報"}</Link>
-<Link className={cur === "news" ? "nl cur" : "nl"} href="/news" data-n="4"><i>{"04"}</i>
-{"お知らせ"}</Link>
+<nav className="pill nv" aria-label="メインナビゲーション"><Link className={cur === "company" ? "nl cur" : "nl"} href="/company" data-n="1">{"企業情報"}</Link>
+<Link className={cur === "service" ? "nl cur" : "nl"} href="/service" data-n="2">{"事業紹介"}</Link>
+<Link className={cur === "recruit" ? "nl cur" : "nl"} href="/recruit" data-n="3">{"採用情報"}</Link>
+<Link className={cur === "news" ? "nl cur" : "nl"} href="/news" data-n="4">{"お知らせ"}</Link>
 <Link className="go" href="/contact">{"お問い合わせ"}<svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </Link>
@@ -73,57 +69,42 @@ function Hud({ main, cur }: { main: boolean; cur?: string }) {
 </button>
 </nav>
 </header>
-<div className="bt"><span className="pill sh">{"Scroll ↓"}</span>
-<span style={{"display": "inline-flex", "gap": "10px"} as CSSProperties}>{main && (
-<button className="pill" type="button" data-act="replay">{"Opening replay"}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v5h-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-</svg>
-</button>
-)}
-<button className="pill" type="button" data-act="motion" aria-pressed="true"><span data-mlabel="1">{"Motion on"}</span>
-<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-</svg>
-</button>
-</span>
-</div>
 </div>
   );
 }
 
-function Menu() {
+function Menu({ main }: { main: boolean }) {
   return (
-<div className="mo"><button className="mo-x" type="button" data-act="menu">{"Close ×"}</button>
-<div className="mo-g"><div><Link className="m1" href="/" data-go="top"><i>{"00"}</i>
-<b>{"Top"}</b>
+<div className="mo"><button className="mo-x" type="button" data-act="menu">{"閉じる ×"}</button>
+<div className="mo-g"><div><Link className="m1" href="/" data-go="top"><b>{"Top"}</b>
 <span>{"トップ"}</span>
 </Link>
-<Link className="m1" href="/company"><i>{"01"}</i>
-<b>{"Company"}</b>
+<Link className="m1" href="/company"><b>{"Company"}</b>
 <span>{"企業情報"}</span>
 </Link>
-<Link className="m1" href="/service"><i>{"02"}</i>
-<b>{"Service"}</b>
+<Link className="m1" href="/service"><b>{"Service"}</b>
 <span>{"事業紹介"}</span>
 </Link>
-<Link className="m1" href="/recruit"><i>{"03"}</i>
-<b>{"Recruit"}</b>
+<Link className="m1" href="/recruit"><b>{"Recruit"}</b>
 <span>{"採用情報"}</span>
 </Link>
-<Link className="m1" href="/news"><i>{"04"}</i>
-<b>{"News"}</b>
+<Link className="m1" href="/news"><b>{"News"}</b>
 <span>{"お知らせ"}</span>
 </Link>
-<Link className="m1" href="/contact"><i>{"05"}</i>
-<b>{"Contact"}</b>
+<Link className="m1" href="/contact"><b>{"Contact"}</b>
 <span>{"お問い合わせ"}</span>
 </Link>
 </div>
 <div><p className="en" style={{"margin": "0 0 12px", "fontSize": "18px", "fontWeight": "600"} as CSSProperties}>{"Our Services"}</p>
-<Link className="m2" href="/service/real-estate-consulting"><i>{"01"}</i>
-{"不動産コンサル事業"}</Link>
-<Link className="m2" href="/service/outsourcing"><i>{"02"}</i>
-{"アウトソーシング事業"}</Link>
-<Link className="m2" href="/service/product-development"><i>{"03"}</i>
-{"プロダクト開発事業"}</Link>
+<Link className="m2" href="/service/real-estate-consulting">{"不動産コンサル事業"}</Link>
+<Link className="m2" href="/service/outsourcing">{"アウトソーシング事業"}</Link>
+<Link className="m2" href="/service/product-development">{"プロダクト開発事業"}</Link>
+<div className="mo-o">
+{main && (
+<button type="button" data-act="replay">{"オープニングをもう一度見る"}</button>
+)}
+<button type="button" data-act="motion" aria-pressed="true"><span data-mlabel="1">{"動きを止める"}</span></button>
+</div>
 </div>
 </div>
 </div>
@@ -179,9 +160,7 @@ function Opener() {
 </g>
 </svg>
 <div className="op-b"><span>{"株式会社 Jotto"}</span>
-<span className="op-n" data-count="1">{"100"}</span>
 </div>
-<i className="op-l"></i>
 </div>
   );
 }
@@ -236,7 +215,7 @@ export function Shell({ kind, cur, children }: { kind: "main" | "lower"; cur?: s
       </div>
       {main && <canvas className="fx" aria-hidden="true" />}
       <Hud main={main} cur={cur} />
-      <Menu />
+      <Menu main={main} />
       {main && <Opener />}
       <PopBoot kind={kind} />
     </div>
@@ -245,16 +224,13 @@ export function Shell({ kind, cur, children }: { kind: "main" | "lower"; cur?: s
 
 export type Crumb = { href?: string; label: string };
 
-export function PageHero({ crumbs, lines, num, label, children }: { crumbs: Crumb[]; lines: string[]; num: string; label: string; children?: ReactNode }) {
+export function PageHero({ crumbs, lines, label, children }: { crumbs: Crumb[]; lines: string[]; num?: string; label: string; children?: ReactNode }) {
   return (
     <section className="ph" id="top" data-th="d">
       <div className="dots" aria-hidden="true" />
       <i className="ring1" aria-hidden="true" />
       {children ?? (
-        <>
-          <span className="ph-n" aria-hidden="true">{num}</span>
-          <BigBug />
-        </>
+        <BigBug />
       )}
       <nav aria-label="パンくずリスト">
         <ol className="bc fd" style={{ animationDelay: ".05s" }}>
@@ -274,7 +250,11 @@ export function PageHero({ crumbs, lines, num, label, children }: { crumbs: Crum
         ))}
       </h1>
       <p className="ph-j fd" style={{ animationDelay: ".55s" }}>
-        <i data-a="" data-ay="1.12">{num}</i>
+        <i data-a="" data-ay="1.12">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <use href="#jbugw" />
+          </svg>
+        </i>
         {label}
       </p>
     </section>
@@ -313,10 +293,14 @@ export function Cta({ title, text, label, href, side = "r" }: { title: string; t
   );
 }
 
-export function SecHead({ num, en, ja }: { num: string; en: string; ja: string }) {
+export function SecHead({ en, ja }: { num?: string; en: string; ja: string }) {
   return (
     <div className="shd io">
-      <i className="nb pp">{num}</i>
+      <i className="nb pp">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <use href="#jbugw" />
+        </svg>
+      </i>
       <b className="up">{en}</b>
       <span className="up">{ja}</span>
     </div>

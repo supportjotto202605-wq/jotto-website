@@ -47,6 +47,23 @@ export const viewport: Viewport = {
   themeColor: "#0a0a0a",
 };
 
+/* 会社情報の構造化データ(検索エンジン向け)。住所は市区町村までにとどめる */
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "株式会社Jotto",
+  alternateName: "Jotto Inc.",
+  url: "https://jotto.co.jp",
+  logo: "https://jotto.co.jp/jotto-logo.svg",
+  image: "https://jotto.co.jp/og.png",
+  description,
+  email: "info@jotto.co.jp",
+  foundingDate: "2026-06",
+  founder: { "@type": "Person", name: "大野一樹" },
+  address: { "@type": "PostalAddress", addressCountry: "JP", addressRegion: "東京都", addressLocality: "豊島区" },
+  sameAs: ["https://www.instagram.com/jotto202605/"],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,7 +71,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${jost.variable} ${zenMaru.variable}`}>{children}</body>
+      <body className={`${jost.variable} ${zenMaru.variable}`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        {children}
+      </body>
     </html>
   );
 }

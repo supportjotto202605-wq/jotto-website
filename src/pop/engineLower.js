@@ -113,7 +113,7 @@ export function bootLower(root) {
       if (a === 'menu') root.classList.toggle('mop');
       else if (a === 'motion') {
         motion = !motion; root.classList.toggle('nomo', !motion); b.setAttribute('aria-pressed', motion ? 'true' : 'false');
-        var ml = b.querySelector('[data-mlabel]'); if (ml) ml.textContent = motion ? 'Motion on' : 'Motion off';
+        var ml = b.querySelector('[data-mlabel]'); if (ml) ml.textContent = motion ? '動きを止める' : '動きを再開する';
       } else if (self._act) self._act(a, b, e);
     });
     root.addEventListener('click', function (e) {

@@ -119,11 +119,8 @@ export function bootMain(root) {
       if (raw > cs) for (i = 0; i < v.length; i++) if (v[i][2] > cs) v[i][2] = cs + (v[i][2] - cs) / (raw - cs) * (cap - cs);
       TH.push(mk(v, true));
       LITS.push({ el: ld.el.parentNode, th: 0, s: cap - 2, x: ld.x, y: ld.y, land: true });
-      for (i = 1; i < c.length; i++) {
-        var e = [vS.slice(), [c[i].x, mid, mid], [c[i].x, c[i].y, c[i].y], [c[i].x, cbs[i], cbs[i]], vM.slice()];
-        TH.push(mk(e, false));
-        LITS.push({ el: c[i].el.parentNode, th: i, s: c[i].y - 6, x: c[i].x, y: c[i].y });
-      }
+      /* ほかの事業パネルは、てんとう虫の線が事業の列に着いたときに一緒に点灯する(線は1本だけ) */
+      for (i = 1; i < c.length; i++) LITS.push({ el: c[i].el.parentNode, th: 0, s: c[0].y - 6 + i * 26, x: c[i].x, y: c[i].y });
       TH.forEach(function (t, k) { if (old[k] != null) { t.p = t.tp = find(t, old[k]); t.ang = oldA[k][0]; t.en = oldA[k][1]; } });
       LITS.forEach(function (l) { l.on = l.el.classList.contains('lit'); });
       if (self._sel != null && self._sel !== sel && TH[0]) {
@@ -166,7 +163,7 @@ export function bootMain(root) {
     /* ---- てんとう虫を描く ---- */
     function bug(x, y, ang, s, flap, glow, zn) {
       cx.save(); cx.translate(x, y); cx.rotate(ang);
-      if (glow > 0 && zn === 'd') {
+      if (false) {
         cx.globalCompositeOperation = 'lighter';
         var g = cx.createRadialGradient(0, 0, 0, 0, 0, s * 3.4);
         g.addColorStop(0, 'rgba(255,120,96,' + (.55 * glow) + ')'); g.addColorStop(.35, 'rgba(192,57,43,' + (.28 * glow) + ')'); g.addColorStop(1, 'rgba(192,57,43,0)');
@@ -313,10 +310,10 @@ export function bootMain(root) {
       else if (k === 'motion') {
         motion = !motion; root.classList.toggle('nomo', !motion);
         a.setAttribute('aria-pressed', motion ? 'true' : 'false');
-        var lb = a.querySelector('[data-mlabel]'); if (lb) lb.textContent = motion ? 'Motion on' : 'Motion off';
+        var lb = a.querySelector('[data-mlabel]'); if (lb) lb.textContent = motion ? '動きを止める' : '動きを再開する';
       } else if (k === 'replay') {
         if (!motion) return;
-        window.scrollTo(0, 0); root.classList.remove('seen');
+        window.scrollTo(0, 0); root.classList.remove('seen'); root.classList.remove('mop');
         var op = root.querySelector('.op'), cl = op.cloneNode(true); op.parentNode.replaceChild(cl, op);
         cnt = cl.querySelector('[data-count]'); opT = performance.now(); self._b2 = false;
         TH.forEach(function (t) { t.p = t.tp = 0; });
@@ -397,7 +394,7 @@ export function bootMain(root) {
           if (!open || z !== curz) {
             if (open) { cx.lineTo(th.X[j], yy); cx.stroke(); }
             curz = z; cx.beginPath(); cx.lineDashOffset = th.L[j] % 11.1;
-            cx.strokeStyle = z === 'l' ? 'rgba(10,10,10,.5)' : (z === 'r' ? 'rgba(255,255,255,.8)' : 'rgba(240,237,232,.5)');
+            cx.strokeStyle = z === 'r' ? 'rgba(255,255,255,.85)' : 'rgba(192,57,43,.9)';
             cx.moveTo(th.X[j], yy); open = true;
           } else cx.lineTo(th.X[j], yy);
         }
@@ -411,14 +408,10 @@ export function bootMain(root) {
           var x1 = th.X[j], y1 = th.Y[j] - st, al = Math.pow(1 - dl / CL, 1.6) * en;
           if (!(y1 < -200 && py0 < -200) && !(y1 > H + 200 && py0 > H + 200)) {
             var z2 = thAt(th.Y[j], th.X[j]);
-            if (z2 === 'd') {
-              cx.globalCompositeOperation = 'lighter';
-              cx.strokeStyle = th.main ? 'rgba(192,57,43,' + (al * .22) + ')' : 'rgba(240,237,232,' + (al * .07) + ')'; cx.lineWidth = 20; cx.beginPath(); cx.moveTo(px0, py0); cx.lineTo(x1, y1); cx.stroke();
-              cx.strokeStyle = th.main ? 'rgba(240,84,64,' + (al * .7) + ')' : 'rgba(240,237,232,' + (al * .25) + ')'; cx.lineWidth = 7; cx.beginPath(); cx.moveTo(px0, py0); cx.lineTo(x1, y1); cx.stroke();
-              cx.strokeStyle = 'rgba(255,244,238,' + (al * (th.main ? .95 : .75)) + ')'; cx.lineWidth = 2; cx.beginPath(); cx.moveTo(px0, py0); cx.lineTo(x1, y1); cx.stroke();
+            if (false) {
             } else {
               cx.globalCompositeOperation = 'source-over';
-              cx.strokeStyle = z2 === 'l' ? 'rgba(192,57,43,' + al + ')' : 'rgba(255,255,255,' + al + ')';
+              cx.strokeStyle = z2 === 'r' ? 'rgba(255,255,255,' + al + ')' : 'rgba(192,57,43,' + al + ')';
               cx.lineWidth = 1.5 + 6 * al; cx.beginPath(); cx.moveTo(px0, py0); cx.lineTo(x1, y1); cx.stroke();
             }
           }
