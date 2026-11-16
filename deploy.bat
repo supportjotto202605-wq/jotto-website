@@ -1,6 +1,8 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
+echo === 0/2 前回のビルド結果を削除しています ===
+if exist .next rmdir /s /q .next
 echo === 1/2 ビルド中です(1〜2分かかります) ===
 call npm run build
 if errorlevel 1 (
@@ -11,7 +13,7 @@ if errorlevel 1 (
 )
 echo === 2/2 公開中です ===
 git add .
-git commit -m "Renew site with POP design"
+git commit -m "Update site content"
 git push
 if errorlevel 1 (
   echo.

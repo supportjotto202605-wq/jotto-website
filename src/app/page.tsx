@@ -170,9 +170,9 @@ export default function Page() {
 <span className="up">{"お知らせ"}</span>
 </div>
 <div className="io"><Link className="nw up" href="/news"><i className="nd" data-a="n1"></i>
-<span className="nw-d">{"2026 / 06"}</span>
+<span className="nw-d">{"2026 / 11"}</span>
 <span className="nw-g">{"NEWS"}</span>
-<span className="nw-t">{"株式会社Jotto　設立"}</span>
+<span className="nw-t">{"コーポレートサイト　リニューアル"}</span>
 <span className="nw-a"><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </span>
