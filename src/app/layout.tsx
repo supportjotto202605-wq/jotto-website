@@ -1,30 +1,50 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Noto_Sans_JP } from "next/font/google";
-import CustomCursor from "@/components/CustomCursor";
-import Header from "@/components/Header";
-import SiteEffects from "@/components/SiteEffects";
+import type { Metadata, Viewport } from "next";
+import { Jost, Zen_Maru_Gothic } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const jost = Jost({
   subsets: ["latin"],
-  weight: ["300"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  weight: ["400", "500", "600"],
+  variable: "--font-jost",
+  display: "swap",
 });
 
-const notoSansJP = Noto_Sans_JP({
+const zenMaru = Zen_Maru_Gothic({
   subsets: ["latin"],
-  weight: ["300", "400"],
-  variable: "--font-noto-sans-jp",
+  weight: ["400", "500", "700"],
+  variable: "--font-zen",
+  display: "swap",
 });
+
+const description =
+  "株式会社Jottoは、不動産管理・不動産コンサル・アウトソーシング・プロダクト開発の4領域で、お客様のビジネス課題を解決するパートナーです。";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jotto.co.jp"),
   title: {
     default: "株式会社Jotto",
     template: "%s | 株式会社Jotto",
   },
-  description:
-    "株式会社Jottoは、不動産管理・不動産コンサル・アウトソーシング・IT事業の4領域で、お客様のビジネス課題を解決するパートナーです。",
+  description,
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "https://jotto.co.jp",
+    siteName: "株式会社Jotto",
+    title: "株式会社Jotto",
+    description,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "株式会社Jotto" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "株式会社Jotto",
+    description,
+    images: ["/og.png"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -34,12 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${cormorant.variable} ${notoSansJP.variable} antialiased`}>
-        <CustomCursor />
-        <Header />
-        <main>{children}</main>
-        <SiteEffects />
-      </body>
+      <body className={`${jost.variable} ${zenMaru.variable}`}>{children}</body>
     </html>
   );
 }
