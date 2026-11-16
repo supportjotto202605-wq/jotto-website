@@ -14,6 +14,10 @@ export const runtime = "edge";
 const ALLOWED_ORIGINS = ["https://jotto.co.jp", "https://www.jotto.co.jp"];
 const ALLOWED_KEYS = ["お問い合わせの種類", "ご相談の事業", "企業名", "お名前", "フリガナ", "メールアドレス", "電話番号", "希望職種", "お問い合わせ内容"];
 const MODES = ["partner", "apply", "general"];
+/* ホームページ制作のヒアリングシート(form: "web")で受け付ける項目 */
+const WEB_KEYS = ["ご希望のプラン", "追加オプション", "会社名・屋号", "お名前", "メールアドレス", "事業の内容", "ホームページの目的", "素材のご用意", "載せたいページと内容", "参考にしたいサイト", "希望する雰囲気・色", "ドメイン", "公開の希望時期", "その他のご要望"];
+const WEB_REQUIRED = ["ご希望のプラン", "会社名・屋号", "お名前", "事業の内容", "ホームページの目的", "素材のご用意", "載せたいページと内容", "ドメイン"];
+const LONG_KEYS = ["お問い合わせ内容", "事業の内容", "載せたいページと内容", "参考にしたいサイト", "その他のご要望"];
 const MIN_AGE_MS = 3000;
 const MAX_AGE_MS = 2 * 60 * 60 * 1000;
 const WINDOW_MS = 10 * 60 * 1000;
@@ -88,7 +92,7 @@ export async function POST(request: Request) {
 
     const raw = await request.text();
     if (raw.length > 20000) return reject(413);
-    const body = JSON.parse(raw) as { mode?: unknown; data?: unknown; token?: unknown; website?: unknown; turnstile?: unknown };
+    const body = JSON.parse(raw) as { form?: unknown; mode?: unknown; data?: unknown; token?: unknown; website?: unknown; turnstile?: unknown };
 
     // ハニーポット:値が入っていたら、成功したように見せて何もしない
     if (typeof body.website === "string" && body.website !== "") {
@@ -109,21 +113,23 @@ export async function POST(request: Request) {
     const data = body.data && typeof body.data === "object" ? (body.data as Record<string, unknown>) : null;
     if (!data) return reject(400);
 
-    const entries = ALLOWED_KEYS.filter((key) => typeof data[key] === "string" && data[key])
-      .map((key) => [key, String(data[key]).slice(0, key === "お問い合わせ内容" ? 5000 : 200)] as const);
+    const web = body.form === "web";
+    const entries = (web ? WEB_KEYS : ALLOWED_KEYS).filter((key) => typeof data[key] === "string" && data[key])
+      .map((key) => [key, String(data[key]).slice(0, LONG_KEYS.includes(key) ? 3000 : 200)] as const);
     const email = data["メールアドレス"];
-    const hasBody = mode === "apply" || entries.some(([key]) => key === "お問い合わせ内容");
-    if (!isEmail(email) || !entries.some(([key]) => key === "お名前") || !hasBody) return reject(400);
+    const has = (name: string) => entries.some(([key]) => key === name);
+    const hasBody = web ? WEB_REQUIRED.every(has) : mode === "apply" || has("お問い合わせ内容");
+    if (!isEmail(email) || !has("お名前") || !hasBody) return reject(400);
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const modeLabel = mode === "partner" ? "パートナー企業募集" : mode === "apply" ? "応募する" : "一般問い合わせ";
+    const modeLabel = web ? "ホームページ制作のお申し込み" : mode === "partner" ? "パートナー企業募集" : mode === "apply" ? "応募する" : "一般問い合わせ";
     const bodyText = entries.map(([key, value]) => `${key}: ${value}`).join("\n");
 
     const { error } = await resend.emails.send({
       from: `Jotto Webサイト <${process.env.CONTACT_FROM_EMAIL}>`,
       to: process.env.CONTACT_TO_EMAIL as string,
       replyTo: email,
-      subject: `【お問い合わせ】${modeLabel}`,
+      subject: web ? `【ホームページ制作】お申し込み（${entries.find(([key]) => key === "会社名・屋号")?.[1] ?? ""}）`.replace(/[\r\n]/g, " ") : `【お問い合わせ】${modeLabel}`,
       text: bodyText,
     });
 
@@ -139,8 +145,24 @@ export async function POST(request: Request) {
         from: `株式会社Jotto <${process.env.CONTACT_FROM_EMAIL}>`,
         to: email,
         replyTo: process.env.CONTACT_TO_EMAIL as string,
-        subject: "【株式会社Jotto】お問い合わせを受け付けました",
-        text: [
+        subject: web ? "【株式会社Jotto】ホームページ制作のお申し込みを受け付けました" : "【株式会社Jotto】お問い合わせを受け付けました",
+        text: (web ? [
+          "このたびは株式会社Jottoのホームページ制作にお申し込みいただき、ありがとうございます。",
+          "ヒアリングシートを受け付けました。",
+          "",
+          "内容を確認のうえ、金額と納期を制作担当よりメールでご連絡いたします。",
+          "この時点では料金は発生しません。お見積りにご了承いただいてから、制作を開始します。",
+          "",
+          "■ 受付時間：平日 10:00〜18:00",
+          "時間外にいただいたご連絡は、翌営業日以降に順次お返事いたします。",
+          "なお、やり取りはメールまたはLINEの文章のみで進めております。",
+          "対面・電話・オンラインでの打ち合わせは行っておりませんので、あらかじめご了承ください。",
+          "",
+          "※このメールは自動送信です。お心当たりのない場合は、お手数ですが本メールを破棄してください。",
+          "",
+          "株式会社Jotto 制作担当",
+          "https://jotto.co.jp/web-production",
+        ] : [
           "このたびは株式会社Jottoへお問い合わせいただき、ありがとうございます。",
           "以下の種類でお問い合わせを受け付けました。",
           "",
@@ -152,7 +174,7 @@ export async function POST(request: Request) {
           "",
           "株式会社Jotto",
           "https://jotto.co.jp",
-        ].join("\n"),
+        ]).join("\n"),
       });
       if (auto.error) console.error("Resend auto-reply error:", auto.error);
     } catch (autoError) {

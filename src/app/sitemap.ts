@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/service/real-estate-consulting",
     "/service/outsourcing",
     "/service/product-development",
+    "/web-production",
     "/recruit",
     "/news",
     "/contact",

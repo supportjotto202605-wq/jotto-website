@@ -122,6 +122,7 @@ function SiteFooter({ lower }: { lower: boolean }) {
 </div>
 <nav className="ft-n" aria-label="フッターナビゲーション"><Link href="/company">{"企業情報"}</Link>
 <Link href="/service">{"事業紹介"}</Link>
+<Link href="/web-production">{"ホームページ制作"}</Link>
 <Link href="/recruit">{"採用情報"}</Link>
 <Link href="/news">{"お知らせ"}</Link>
 <Link href="/contact">{"お問い合わせ"}</Link>

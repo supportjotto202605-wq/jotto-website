@@ -478,3 +478,57 @@ body{overflow-x:hidden}
 /* ボット判定(Turnstile)の表示枠 */
 .ts{display:flex;justify-content:flex-end;margin-top:22px}
 .ts:empty{display:none}
+
+/* ===== ホームページ制作ページ(料金プラン・流れ・決まり) ===== */
+.pl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;padding-top:56px}
+.pc{position:relative;display:flex;flex-direction:column;box-sizing:border-box;padding:30px 30px 26px;border-radius:34px;background:#141414;border:3px solid #2c2c2c;transition:border-color .8s,transform .6s var(--bo)}
+.pc.lit{border-color:#c0392b}
+.pc.pk{background:#f0ede8;border-color:#f0ede8;color:#0a0a0a}
+.pc.pk.lit{border-color:#c0392b}
+.pc:hover{transform:translateY(-8px)}
+.pc-r{position:absolute;right:24px;top:-18px;display:inline-flex;align-items:center;min-height:36px;padding:0 18px;border-radius:999px;background:#c0392b;color:#fff;font-size:13px;font-weight:700;letter-spacing:.12em;transform:rotate(4deg)}
+.pc-h{display:flex;align-items:center;gap:14px;margin-bottom:26px;font-family:var(--font-jost),sans-serif;font-weight:500;font-size:16px;letter-spacing:.06em;color:#c8c5c0}
+.pc.pk .pc-h{color:#5a5754}
+.pc-n{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:#2c2c2c;color:#f0ede8;font-weight:600;font-size:18px;font-style:normal;transition:background .8s,transform .8s var(--bo)}
+.pc.pk .pc-n{background:#0a0a0a}
+.pc.lit .pc-n{background:#c0392b;color:#fff;transform:scale(1.1)}
+.pc-j{display:block;font-size:26px;font-weight:700;letter-spacing:.08em}
+.pc-l{margin:8px 0 0;font-size:14.5px;line-height:1.8;letter-spacing:.04em;opacity:.78}
+.pc-p{margin:22px 0 0;padding-bottom:22px;border-bottom:2px dashed rgba(240,237,232,.25);font-size:20px;font-weight:700;letter-spacing:.06em}
+.pc.pk .pc-p{border-bottom-color:rgba(10,10,10,.22)}
+.pc-p .en{font-size:clamp(60px,6vw,88px);font-weight:600;line-height:1;letter-spacing:-.03em;margin-right:6px}
+.pc-p small{display:block;margin-top:8px;font-size:13px;font-weight:500;letter-spacing:.08em;opacity:.7}
+.pc ul{flex:1;margin:22px 0 26px;padding:0;list-style:none}
+.pc li{position:relative;padding:7px 0 7px 22px;font-size:15px;line-height:1.7;letter-spacing:.04em}
+.pc li::before{content:"";position:absolute;left:0;top:16px;width:9px;height:9px;border-radius:50%;background:#c0392b}
+.pc-b{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:0 9px 0 24px;border-radius:999px;background:#f0ede8;color:#0a0a0a;font-size:14.5px;font-weight:700;letter-spacing:.06em;transition:transform .5s var(--bo)}
+.pc.pk .pc-b{background:#0a0a0a;color:#f0ede8}
+.pc-b i{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#c0392b;color:#fff;transition:transform .6s var(--bo)}
+.pc-b svg{width:16px;height:16px}
+.pc-b:hover{transform:scale(1.03)}
+.pc-b:hover i{transform:translateX(4px)}
+.wsub{margin:clamp(64px,10vh,110px) 0 26px;font-size:clamp(22px,2.2vw,30px);font-weight:700;letter-spacing:.08em}
+.wsub span{display:inline-block}
+.nt{margin:26px 0 0;font-size:13.5px;line-height:1.9;letter-spacing:.05em;color:#9a9792}
+.nt span{display:block}
+.ov.tm{align-items:start;grid-template-columns:22px 200px minmax(0,1fr)}
+.ov.tm .nd{margin-top:10px}
+.ov.tm dt{padding-top:3px;color:#f0ede8;font-weight:700}
+.ov.tm dd{font-size:15.5px;font-weight:500;line-height:1.95;color:#d6d3ce}
+.fl.f6{padding-top:0}
+.fl.f6 .fs{margin-top:0;min-height:230px;background:#fff;border-color:#0a0a0a}
+.fl.f6 .fs.lit{border-color:#c0392b}
+.fl.f6 .fs-h,.fl.f6 .fs p{color:#4a4744}
+.fl.f6 .fs-n{background:#0a0a0a}
+.fl.f6 .fs.lit .fs-n{background:#c0392b}
+textarea.ip.sm{min-height:110px}
+@media (max-width:900px){
+  .pl{grid-template-columns:minmax(0,1fr);gap:30px}
+  .ov.tm{grid-template-columns:22px minmax(0,1fr)}
+  .fl.f6 .fs{min-height:0}
+}
+/* 線が左端のカードに届いたら、同じ段のカードをまとめて点灯させる */
+.pc.lit~.pc{border-color:#c0392b}
+.pc.lit~.pc .pc-n{background:#c0392b;color:#fff;transform:scale(1.1)}
+.fl.f6 .fs:nth-child(1).lit~.fs:nth-child(-n+3),.fl.f6 .fs:nth-child(4).lit~.fs{border-color:#c0392b}
+.fl.f6 .fs:nth-child(1).lit~.fs:nth-child(-n+3) .fs-n,.fl.f6 .fs:nth-child(4).lit~.fs .fs-n{background:#c0392b;color:#fff;transform:scale(1.1)}

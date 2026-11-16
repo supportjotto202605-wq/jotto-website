@@ -207,11 +207,12 @@ export function bootLower(root) {
       if (String(n) === '2') tsLoad();
       self._rebuild();
     }
-    setKind('general');
+    setKind(fw.getAttribute('data-k0') || 'general');
     /* 事業ページ・採用ページから来たときは、あらかじめ選んでおく */
     try {
       var qs = new URLSearchParams(window.location.search), qk = qs.get('kind'), qsv = qs.get('service'), qp = qs.get('position');
       if (qk === 'partner' || qk === 'apply') setKind(qk);
+      var qpl = qs.get('plan'); if (qpl && fw.getAttribute('data-form') && fw.querySelector('.seg [data-k="' + qpl.replace(/[^a-z]/g, '') + '"]')) setKind(qpl.replace(/[^a-z]/g, ''));
       if (qsv) { var chp = fw.querySelector('.chips [data-s="' + qsv.replace(/[^a-z-]/g, '') + '"]'); if (chp) chp.classList.add('on'); }
       if (qp) { var sel = fw.querySelector('#f-pos'); if (sel) Array.prototype.forEach.call(sel.options, function (o) { if (o.value === qp || o.text === qp) sel.value = o.value; }); }
     } catch (e) {}
@@ -226,16 +227,16 @@ export function bootLower(root) {
         if (tsKey && !tsToken) { em3.hidden = false; tsLoad(); self._rebuild(); return; }
         sending = true; b.disabled = true;
         var data = {}; lastRows.forEach(function (rw) { data[rw[0]] = rw[1]; if (rw[0] === 'メールアドレス') data.email = rw[1]; });
-        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: kind, data: data, token: ctToken, turnstile: tsToken, website: (fw.querySelector('[data-hp]') || {}).value || '' }) })
+        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ form: fw.getAttribute('data-form') || '', mode: kind, data: data, token: ctToken, turnstile: tsToken, website: (fw.querySelector('[data-hp]') || {}).value || '' }) })
           .then(function (r) { if (!r.ok) throw new Error('send'); step(3); })
           .catch(function () { em2.hidden = false; getToken(); tsReset(); })
           .then(function () { sending = false; b.disabled = false; });
       }
       else if (a === 'confirm') {
         var ok = true, rowsOut = [];
-        var kb = fw.querySelector('[data-k].on'); rowsOut.push(['お問い合わせの種類', kb ? kb.textContent : '']);
+        var kb = fw.querySelector('[data-k].on'); rowsOut.push([fw.getAttribute('data-kl') || 'お問い合わせの種類', kb ? kb.textContent : '']);
         var chips = Array.prototype.filter.call(fw.querySelectorAll('.chips button.on'), vis).map(function (c) { return c.textContent; });
-        if (chips.length) rowsOut.push(['ご相談の事業', chips.join('、')]);
+        if (chips.length) rowsOut.push([fw.getAttribute('data-cl') || 'ご相談の事業', chips.join('、')]);
         Array.prototype.forEach.call(fw.querySelectorAll('[data-fr]'), function (r) {
           if (!vis(r)) return;
           var f = r.querySelector('.ip'), bad = false;
