@@ -169,18 +169,18 @@ export default function Page() {
 <b className="up">{"News"}</b>
 <span className="up">{"お知らせ"}</span>
 </div>
-<div className="io"><Link className="nw up" href="/news"><i className="nd" data-a="n1"></i>
+<div className="io"><Link className="nw up" href="/web-production"><i className="nd" data-a="n1"></i>
 <span className="nw-d">{"2026 / 11"}</span>
 <span className="nw-g">{"NEWS"}</span>
-<span className="nw-t">{"コーポレートサイト　リニューアル"}</span>
+<span className="nw-t">{"ホームページ制作サービス　開始"}</span>
 <span className="nw-a"><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </span>
 </Link>
 <Link className="nw up" style={{"--d": ".1s"} as CSSProperties} href="/news"><i className="nd" data-a="n2"></i>
-<span className="nw-d">{"2026 / 06"}</span>
+<span className="nw-d">{"2026 / 11"}</span>
 <span className="nw-g">{"NEWS"}</span>
-<span className="nw-t">{"コーポレートサイト　オープン"}</span>
+<span className="nw-t">{"コーポレートサイト　リニューアル"}</span>
 <span className="nw-a"><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </span>

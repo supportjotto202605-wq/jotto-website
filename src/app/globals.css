@@ -532,3 +532,10 @@ textarea.ip.sm{min-height:110px}
 .pc.lit~.pc .pc-n{background:#c0392b;color:#fff;transform:scale(1.1)}
 .fl.f6 .fs:nth-child(1).lit~.fs:nth-child(-n+3),.fl.f6 .fs:nth-child(4).lit~.fs{border-color:#c0392b}
 .fl.f6 .fs:nth-child(1).lit~.fs:nth-child(-n+3) .fs-n,.fl.f6 .fs:nth-child(4).lit~.fs .fs-n{background:#c0392b;color:#fff;transform:scale(1.1)}
+.nw-l{display:inline-flex;align-items:center;gap:8px;margin-top:14px;min-height:40px;padding:0 18px;border-radius:999px;background:#f0ede8;color:#0a0a0a;font-size:13.5px;font-weight:700;letter-spacing:.06em;transition:background .3s,color .3s}
+.nw-l::after{content:"→";color:#c0392b}
+.nw-l:hover{background:#c0392b;color:#fff}
+.nw-l:hover::after{color:#fff}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn.lineb{box-shadow:inset 0 0 0 2px #06c755}
+.btn.lineb i{background:#06c755}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Cta, PageHero, SecHead, Shell } from "@/pop/parts";
 
@@ -9,7 +10,15 @@ export const metadata: Metadata = {
 };
 
 /* お知らせを足すときは、この配列の先頭に追加する */
-const newsItems = [
+const newsItems: { date: string; category: string; title: string; body: string; href?: string; link?: string }[] = [
+  {
+    date: "2026 / 11",
+    category: "SERVICE",
+    title: "ホームページ制作サービスを開始しました",
+    body: "打ち合わせ不要、ヒアリングシートに記入するだけで依頼できるホームページ制作サービスを開始いたしました。月額費用のかからない売り切りで、4万円（税別）から承ります。LINE公式アカウント「Jotto ホームページ制作」からもご相談いただけます。",
+    href: "/web-production",
+    link: "料金・ご依頼の流れを見る",
+  },
   {
     date: "2026 / 11",
     category: "NEWS",
@@ -45,6 +54,11 @@ export default function Page() {
               <span className="nw-t">
                 {n.title}
                 <small>{n.body}</small>
+                {n.href && (
+                  <Link className="nw-l" href={n.href}>
+                    {n.link}
+                  </Link>
+                )}
               </span>
             </div>
           ))}

@@ -31,12 +31,20 @@ export default function Page() {
             <p className="bd up" style={{ "--d": ".12s" } as CSSProperties}>
               打ち合わせの時間を取らずに、ホームページを作れるサービスです。ヒアリングシートにご希望を記入していただき、その内容をもとに制作します。打ち合わせをしない分、費用を抑えてお届けします。
             </p>
-            <a className="btn up" style={{ "--d": ".24s" } as CSSProperties} href="#apply">
-              ヒアリングシートを書く
-              <i>
-                <Arw />
-              </i>
-            </a>
+            <div className="btns up" style={{ "--d": ".24s" } as CSSProperties}>
+              <a className="btn" href="#apply">
+                ヒアリングシートを書く
+                <i>
+                  <Arw />
+                </i>
+              </a>
+              <a className="btn lineb" href="https://line.me/R/ti/p/@457zuanz" target="_blank" rel="noopener noreferrer">
+                LINEで相談する
+                <i>
+                  <Arw />
+                </i>
+              </a>
+            </div>
           </div>
           <div className="io">
             {points.map((d, k) => (
