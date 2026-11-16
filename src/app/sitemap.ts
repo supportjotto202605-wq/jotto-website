@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/company",
     "/service",
-    "/service/property-management",
     "/service/real-estate-consulting",
     "/service/outsourcing",
     "/service/product-development",

@@ -17,7 +17,7 @@ const zenMaru = Zen_Maru_Gothic({
 });
 
 const description =
-  "株式会社Jottoは、不動産管理・不動産コンサル・アウトソーシング・プロダクト開発の4領域で、お客様のビジネス課題を解決するパートナーです。";
+  "株式会社Jottoは、不動産コンサル・アウトソーシング・プロダクト開発の3領域で、お客様のビジネス課題を解決するパートナーです。";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jotto.co.jp"),

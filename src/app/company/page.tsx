@@ -14,7 +14,7 @@ const rows: { en: string; ja: string; value: ReactNode }[] = [
   { en: "Established", ja: "設立", value: "2026年6月" },
   { en: "CEO", ja: "代表者", value: <>代表取締役　大野一樹<small>Kazuki Ono</small></> },
   { en: "Capital", ja: "資本金", value: "88万円" },
-  { en: "Business", ja: "事業内容", value: "不動産事業・テクノロジー事業・アウトソーシング事業・プロダクト開発事業" },
+  { en: "Business", ja: "事業内容", value: "不動産コンサル事業・アウトソーシング事業・プロダクト開発事業" },
   { en: "Email", ja: "メールアドレス", value: "info@jotto.co.jp" },
   { en: "Invoice number", ja: "適格請求書発行事業者登録番号", value: "T5013301056317" },
 ];

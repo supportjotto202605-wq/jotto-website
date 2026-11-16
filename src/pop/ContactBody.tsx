@@ -32,8 +32,7 @@ export default function ContactBody() {
 </div>
 <div className="fr" data-for="partner general"><p className="lb">{"ご相談の事業"}<em className="op2">{"任意"}</em>
 </p>
-<div className="chips"><button type="button" data-act="chip" data-s="property-management">{"不動産管理"}</button>
-<button type="button" data-act="chip" data-s="real-estate-consulting">{"不動産コンサル"}</button>
+<div className="chips"><button type="button" data-act="chip" data-s="real-estate-consulting">{"不動産コンサル"}</button>
 <button type="button" data-act="chip" data-s="outsourcing">{"アウトソーシング"}</button>
 <button type="button" data-act="chip" data-s="product-development">{"プロダクト開発"}</button>
 <button type="button" data-act="chip">{"その他"}</button>
@@ -65,7 +64,6 @@ export default function ContactBody() {
 </label>
 <select className="ip" id="f-pos" data-req=""><option value="">{"選択してください"}</option>
 <option>{"事業開発プロジェクトマネージャー"}</option>
-<option>{"不動産営業・管理スタッフ"}</option>
 <option>{"エンジニア（Web/アプリ開発）"}</option>
 <option>{"携帯販売スタッフ"}</option>
 </select>

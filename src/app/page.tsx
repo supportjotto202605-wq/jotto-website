@@ -19,8 +19,6 @@ export default function Page() {
 <circle cx="20" cy="28" r="1.6" fill="#0a0a0a" />
 </svg>
 <div className="hero-in"><ul className="tags fd" style={{"animationDelay": "4.7s"} as CSSProperties}><li><i></i>
-{"不動産管理"}</li>
-<li><i></i>
 {"不動産コンサル"}</li>
 <li><i></i>
 {"アウトソーシング"}</li>
@@ -37,10 +35,7 @@ export default function Page() {
 <p className="hs fd" style={{"animationDelay": "4.9s"} as CSSProperties}>{"株式会社 Jotto"}</p>
 </div>
 </section>
-<div className="mq" data-th="r" aria-hidden="true"><div className="mq-t"><div className="mq-g"><span>{"Property Management"}</span>
-<svg viewBox="0 0 32 32"><use href="#jbugw"></use>
-</svg>
-<span>{"Real Estate Consulting"}</span>
+<div className="mq" data-th="r" aria-hidden="true"><div className="mq-t"><div className="mq-g"><span>{"Real Estate Consulting"}</span>
 <svg viewBox="0 0 32 32"><use href="#jbugw"></use>
 </svg>
 <span>{"Outsourcing"}</span>
@@ -50,10 +45,7 @@ export default function Page() {
 <svg viewBox="0 0 32 32"><use href="#jbugw"></use>
 </svg>
 </div>
-<div className="mq-g"><span>{"Property Management"}</span>
-<svg viewBox="0 0 32 32"><use href="#jbugw"></use>
-</svg>
-<span>{"Real Estate Consulting"}</span>
+<div className="mq-g"><span>{"Real Estate Consulting"}</span>
 <svg viewBox="0 0 32 32"><use href="#jbugw"></use>
 </svg>
 <span>{"Outsourcing"}</span>
@@ -93,8 +85,8 @@ export default function Page() {
 </dd>
 </div>
 <div className="fc fc3 up" style={{"--d": ".2s"} as CSSProperties}><dt>{"Business"}</dt>
-<dd><b>{"04"}</b>
-<span>{"4つの事業領域"}</span>
+<dd><b>{"03"}</b>
+<span>{"3つの事業領域"}</span>
 </dd>
 </div>
 </dl>
@@ -104,24 +96,12 @@ export default function Page() {
 <span className="up">{"事業紹介"}</span>
 </div>
 <div className="sv-h io"><h2 className="dh en up">{"Our Services"}</h2>
-<p className="bd up" style={{"margin": "0", "--d": ".15s"} as CSSProperties}>{"4つの事業領域で、"}<br />
+<p className="bd up" style={{"margin": "0", "--d": ".15s"} as CSSProperties}>{"3つの事業領域で、"}<br />
 {"お客様のビジネス課題を解決します。"}</p>
 </div>
 <i className="spl" data-a="split" aria-hidden="true"></i>
-<div className="cds io"><Link className="cdx up" href="/service/property-management"><canvas className="art" data-art="1" data-a="c1" aria-hidden="true"></canvas>
+<div className="cds io"><Link className="cdx up" style={{"--d": "0s"} as CSSProperties} href="/service/real-estate-consulting"><canvas className="art" data-art="2" data-a="c1" aria-hidden="true"></canvas>
 <span className="cx-n">{"01"}</span>
-<span className="cx-v" aria-hidden="true">{"不動産管理事業"}</span>
-<span className="cx-b"><span className="cx-e">{"Property Management"}</span>
-<span className="cx-j">{"不動産管理事業"}</span>
-<span className="cx-d">{"賃貸物件の管理・運営からオーナー様のサポートまで、不動産に関するあらゆるニーズにお応えします。"}</span>
-<span className="cx-m">{"事業の詳細へ"}<i><svg aria-hidden="true"><use href="#arwu"></use>
-</svg>
-</i>
-</span>
-</span>
-</Link>
-<Link className="cdx up" style={{"--d": ".08s"} as CSSProperties} href="/service/real-estate-consulting"><canvas className="art" data-art="2" data-a="c2" aria-hidden="true"></canvas>
-<span className="cx-n">{"02"}</span>
 <span className="cx-v" aria-hidden="true">{"不動産コンサル事業"}</span>
 <span className="cx-b"><span className="cx-e">{"Real Estate Consulting"}</span>
 <span className="cx-j">{"不動産コンサル事業"}</span>
@@ -132,20 +112,20 @@ export default function Page() {
 </span>
 </span>
 </Link>
-<Link className="cdx up" style={{"--d": ".16s"} as CSSProperties} href="/service/outsourcing"><canvas className="art" data-art="3" data-a="c3" aria-hidden="true"></canvas>
-<span className="cx-n">{"03"}</span>
+<Link className="cdx up" style={{"--d": ".08s"} as CSSProperties} href="/service/outsourcing"><canvas className="art" data-art="3" data-a="c2" aria-hidden="true"></canvas>
+<span className="cx-n">{"02"}</span>
 <span className="cx-v" aria-hidden="true">{"アウトソーシング事業"}</span>
 <span className="cx-b"><span className="cx-e">{"Outsourcing"}</span>
 <span className="cx-j">{"アウトソーシング事業"}</span>
-<span className="cx-d">{"業務効率化を実現するアウトソーシングサービス。コア業務に集中できる環境を提供します。"}</span>
+<span className="cx-d">{"店頭での接客・販売支援から事務・サポート業務まで対応するアウトソーシングサービス。コア業務に集中できる環境を提供します。"}</span>
 <span className="cx-m">{"事業の詳細へ"}<i><svg aria-hidden="true"><use href="#arwu"></use>
 </svg>
 </i>
 </span>
 </span>
 </Link>
-<Link className="cdx up" style={{"--d": ".24s"} as CSSProperties} href="/service/product-development"><canvas className="art" data-art="4" data-a="c4" aria-hidden="true"></canvas>
-<span className="cx-n">{"04"}</span>
+<Link className="cdx up" style={{"--d": ".16s"} as CSSProperties} href="/service/product-development"><canvas className="art" data-art="4" data-a="c3" aria-hidden="true"></canvas>
+<span className="cx-n">{"03"}</span>
 <span className="cx-v" aria-hidden="true">{"プロダクト開発事業"}</span>
 <span className="cx-b"><span className="cx-e">{"Product Development"}</span>
 <span className="cx-j">{"プロダクト開発事業"}</span>

@@ -8,27 +8,13 @@ export type Service = {
   slug: string;
   enLines: string[];
   head: string[];
+  art: number;
 };
 
 export const services: Service[] = [
   {
     num: "01",
-    en: "PROPERTY MANAGEMENT",
-    slug: "property-management",
-    enLines: ["Property", "Management"],
-    head: ["不動産に関する", "あらゆるニーズに", "お応えします。"],
-    title: "不動産管理事業",
-    desc: "賃貸物件の管理・運営からオーナー様のサポートまで、不動産に関するあらゆるニーズにお応えします。",
-    details: [
-      "賃貸物件の入居者募集・契約管理",
-      "建物メンテナンス・修繕対応",
-      "家賃収納代行・滞納管理",
-      "オーナー様への定期報告・相談対応",
-    ],
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800",
-  },
-  {
-    num: "02",
+    art: 2,
     en: "REAL ESTATE CONSULTING",
     slug: "real-estate-consulting",
     enLines: ["Real Estate", "Consulting"],
@@ -44,23 +30,25 @@ export const services: Service[] = [
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
   },
   {
-    num: "03",
+    num: "02",
+    art: 3,
     en: "OUTSOURCING",
     slug: "outsourcing",
     enLines: ["Outsourcing"],
     head: ["コア業務に", "集中できる環境を。"],
     title: "アウトソーシング事業",
-    desc: "業務効率化を実現するアウトソーシングサービス。コア業務に集中できる環境を提供します。",
+    desc: "店頭での接客・販売支援から事務・サポート業務まで対応するアウトソーシングサービス。コア業務に集中できる環境を提供します。",
     details: [
-      "経理・会計業務代行",
+      "接客・販売支援",
+      "経理・会計業務サポート",
       "人事・労務管理サポート",
-      "カスタマーサポート代行",
       "データ入力・事務作業代行",
     ],
     image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800&q=80",
   },
   {
-    num: "04",
+    num: "03",
+    art: 4,
     en: "PRODUCT DEVELOPMENT",
     slug: "product-development",
     enLines: ["Product", "Development"],
@@ -69,6 +57,7 @@ export const services: Service[] = [
     desc: "アイデアをプロダクトに。WebアプリからモバイルアプリまでJottoが一気通貫で開発・運用をサポートします。",
     details: [
       "Webアプリケーション開発",
+      "ホームページ制作・リニューアル",
       "モバイルアプリ開発（iOS/Android）",
       "業務システム構築・カスタマイズ",
       "DX推進コンサルティング",
@@ -78,7 +67,7 @@ export const services: Service[] = [
 ];
 
 export const businessSummary =
-  "不動産管理業・不動産コンサル事業・アウトソーシング事業・IT事業（アプリ開発等）";
+  "不動産コンサル事業・アウトソーシング事業・プロダクト開発事業";
 
 export const aboutImage =
   "/about-jotto.png";

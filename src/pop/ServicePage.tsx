@@ -24,7 +24,7 @@ export default function ServicePage({ slug }: { slug: string }) {
         label={sv.title}
       >
         <div className="pa-w fd" style={{ animationDelay: ".4s" }} aria-hidden="true">
-          <canvas className="pa" data-art={Number(sv.num)} />
+          <canvas className="pa" data-art={sv.art} />
           <span className="pa-n">{sv.num}</span>
         </div>
       </PageHero>
@@ -99,7 +99,7 @@ export default function ServicePage({ slug }: { slug: string }) {
       <section className="blk lt" data-th="l">
         <i className="an" data-a="" style={{ right: "calc(var(--px) * .5)", top: "120px" }} />
         <SecHead num="03" en="Other services" ja="その他の事業" />
-        <div className="os io">
+        <div className="os os2 io">
           {others.map((o, k) => (
             <Link key={o.slug} className="oc up" style={{ "--d": `${k * 0.08}s` } as CSSProperties} href={`/service/${o.slug}`}>
               <span className="oc-t">

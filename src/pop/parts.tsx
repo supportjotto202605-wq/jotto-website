@@ -118,13 +118,11 @@ function Menu() {
 </Link>
 </div>
 <div><p className="en" style={{"margin": "0 0 12px", "fontSize": "18px", "fontWeight": "600"} as CSSProperties}>{"Our Services"}</p>
-<Link className="m2" href="/service/property-management"><i>{"01"}</i>
-{"不動産管理事業"}</Link>
-<Link className="m2" href="/service/real-estate-consulting"><i>{"02"}</i>
+<Link className="m2" href="/service/real-estate-consulting"><i>{"01"}</i>
 {"不動産コンサル事業"}</Link>
-<Link className="m2" href="/service/outsourcing"><i>{"03"}</i>
+<Link className="m2" href="/service/outsourcing"><i>{"02"}</i>
 {"アウトソーシング事業"}</Link>
-<Link className="m2" href="/service/product-development"><i>{"04"}</i>
+<Link className="m2" href="/service/product-development"><i>{"03"}</i>
 {"プロダクト開発事業"}</Link>
 </div>
 </div>

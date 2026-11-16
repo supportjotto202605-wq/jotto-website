@@ -65,7 +65,7 @@ export function bootMain(root) {
       var old = TH.map(function (t) { return t.S[Math.min(t.n - 1, Math.round(t.p))]; }), oldA = TH.map(function (t) { return [t.ang, t.en]; });
       TH = []; LITS = [];
       var a0 = P('start', .5, .78), ob = P('obj'), sp = P('split'), mg = P('merge'), inf = P('inf'), n1 = P('n1'), n2 = P('n2'), ct = P('cta'), ld = P('land');
-      var c = [P('c1'), P('c2'), P('c3'), P('c4')];
+      var c = [P('c1'), P('c2'), P('c3'), P('c4')].filter(function (q) { return !!q; });
       if (!a0 || !ob || !sp || !mg || !inf || !ct || !ld || !c[0]) return;
       /* 選んでいる事業(触っているパネル。なければ1つ目)に、てんとう虫の線を通す */
       var sel = 0, cO = c.slice();
@@ -119,7 +119,7 @@ export function bootMain(root) {
       if (raw > cs) for (i = 0; i < v.length; i++) if (v[i][2] > cs) v[i][2] = cs + (v[i][2] - cs) / (raw - cs) * (cap - cs);
       TH.push(mk(v, true));
       LITS.push({ el: ld.el.parentNode, th: 0, s: cap - 2, x: ld.x, y: ld.y, land: true });
-      for (i = 1; i < 4; i++) {
+      for (i = 1; i < c.length; i++) {
         var e = [vS.slice(), [c[i].x, mid, mid], [c[i].x, c[i].y, c[i].y], [c[i].x, cbs[i], cbs[i]], vM.slice()];
         TH.push(mk(e, false));
         LITS.push({ el: c[i].el.parentNode, th: i, s: c[i].y - 6, x: c[i].x, y: c[i].y });

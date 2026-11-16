@@ -6,7 +6,7 @@ import { Arw, Cta, PageHero, SecHead, Shell } from "@/pop/parts";
 
 export const metadata: Metadata = {
   title: "事業紹介",
-  description: "株式会社Jottoの4つの事業(不動産管理・不動産コンサル・アウトソーシング・プロダクト開発)をご紹介します。",
+  description: "株式会社Jottoの3つの事業(不動産コンサル・アウトソーシング・プロダクト開発)をご紹介します。",
   alternates: { canonical: "/service" },
 };
 
@@ -23,13 +23,13 @@ export default function Page() {
       <PageHero crumbs={[{ href: "/", label: "トップ" }, { label: "事業紹介" }]} lines={["Service"]} num="02" label="事業紹介" />
       <section className="blk lt" data-th="l">
         <i className="an" data-a="" style={{ left: "calc(var(--px) * .5)", top: "150px" }} />
-        <SecHead num="02" en="Our Services" ja="4つの事業領域" />
+        <SecHead num="02" en="Our Services" ja="3つの事業領域" />
         <div className="io">
           <p className="bd up" style={{ maxWidth: "640px" }}>
-            4つの事業領域で、お客様のビジネス課題を解決します。
+            3つの事業領域で、お客様のビジネス課題を解決します。
           </p>
         </div>
-        <div className="os os4 io">
+        <div className="os io">
           {services.map((o, k) => (
             <Link key={o.slug} className="oc up" style={{ "--d": `${k * 0.08}s` } as CSSProperties} href={`/service/${o.slug}`}>
               <span className="oc-t">
